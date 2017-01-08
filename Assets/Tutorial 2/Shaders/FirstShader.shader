@@ -15,6 +15,8 @@
 
 			#include "UnityCG.cginc"
 
+			float4 _Tint;
+
 			float4  MyVertexProgram(float4 position : POSITION) : SV_POSITION
 			{
 				return mul(UNITY_MATRIX_MVP,position);
@@ -22,7 +24,7 @@
 
 			float4 MyFragmentProgram(float4 position : SV_POSITION) : SV_TARGET
 			{
-				return float4(1,1,0,1);
+				return _Tint;
 			}
 
 			ENDCG
