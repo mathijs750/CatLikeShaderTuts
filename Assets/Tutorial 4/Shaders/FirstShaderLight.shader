@@ -35,7 +35,8 @@
 			Interpolators MyVertexProgram(VertexData v)
 			{
 				Interpolators i;
-				i.normal = v.normal;
+				i.normal = mul(unity_ObjectToWorld, float4(v.normal, 0));
+				i.normal = normalize(i.normal); // normalize to make shaling work
 				i.position = mul(UNITY_MATRIX_MVP, v.position);
 				i.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				return i;
